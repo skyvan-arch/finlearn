@@ -1,0 +1,109 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Book {
+  id         Int       @id @default(autoincrement())
+  slug       String    @unique
+  title      String
+  shortTitle String
+  author     String
+  edition    String?
+  coverColor String    @default("#1a4a8a")
+  sortOrder  Int       @default(0)
+  chapters   Chapter[]
+  createdAt  DateTime  @default(now())
+}
+
+model Chapter {
+  id             Int               @id @default(autoincrement())
+  bookId         Int
+  book           Book              @relation(fields: [bookId], references: [id])
+  slug           String
+  chapterNumber  Int
+  title          String
+  partTitle      String?
+  lessonContent  String
+  estimatedMins  Int               @default(15)
+  sortOrder      Int
+  questions      Question[]
+  flashcards     Flashcard[]
+  progress       ChapterProgress[]
+
+  @@unique([bookId, chapterNumber])
+  @@unique([bookId, slug])
+}
+
+model Question {
+  id           Int          @id @default(autoincrement())
+  chapterId    Int
+  chapter      Chapter      @relation(fields: [chapterId], references: [id])
+  questionType String       // "MCQ" | "TRUE_FALSE" | "FILL_BLANK" | "NUMERIC"
+  difficulty   String       @default("MEDIUM") // "EASY" | "MEDIUM" | "HARD"
+  tags         String       @default("[]")
+  sourceRef    String?
+  stem         String
+  explanation  String
+  answerData   String       // JSON blob
+  isActive     Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  quizAnswers  QuizAnswer[]
+}
+
+model Flashcard {
+  id          Int      @id @default(autoincrement())
+  chapterId   Int
+  chapter     Chapter  @relation(fields: [chapterId], references: [id])
+  front       String
+  back        String
+  tags        String   @default("[]")
+  sortOrder   Int      @default(0)
+  interval    Int      @default(0)
+  easeFactor  Float    @default(2.5)
+  repetitions Int      @default(0)
+  nextReview  DateTime @default(now())
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model ChapterProgress {
+  id                Int       @id @default(autoincrement())
+  chapterId         Int       @unique
+  chapter           Chapter   @relation(fields: [chapterId], references: [id])
+  lessonCompleted   Boolean   @default(false)
+  lessonCompletedAt DateTime?
+  quizBestScore     Float?
+  quizAttempts      Int       @default(0)
+  flashcardsStudied Int       @default(0)
+  lastActivityAt    DateTime?
+}
+
+model QuizSession {
+  id          Int          @id @default(autoincrement())
+  chapterId   Int
+  chapterSlug String
+  startedAt   DateTime     @default(now())
+  completedAt DateTime?
+  score       Float?
+  totalQ      Int
+  answers     QuizAnswer[]
+}
+
+model QuizAnswer {
+  id          Int         @id @default(autoincrement())
+  sessionId   Int
+  session     QuizSession @relation(fields: [sessionId], references: [id])
+  questionId  Int
+  question    Question    @relation(fields: [questionId], references: [id])
+  userAnswer  String
+  isCorrect   Boolean
+  timeSpentMs Int?
+  answeredAt  DateTime    @default(now())
+}
