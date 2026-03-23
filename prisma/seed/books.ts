@@ -17,4 +17,22 @@ export const books = [
     coverColor: "#2d6a4f",
     sortOrder: 2,
   },
+  {
+    slug: "tuckman",
+    title: "Fixed Income Securities: Tools for Today's Markets",
+    shortTitle: "Tuckman",
+    author: "Bruce Tuckman & Angel Serrat",
+    edition: "3rd Edition",
+    coverColor: "#0f766e",
+    sortOrder: 3,
+  },
+  {
+    slug: "hull-risk",
+    title: "Risk Management and Financial Institutions",
+    shortTitle: "Hull Risk",
+    author: "John C. Hull",
+    edition: "5th Edition",
+    coverColor: "#991b1b",
+    sortOrder: 4,
+  },
 ]

@@ -66,7 +66,23 @@ export default async function HomePage() {
         ))}
       </div>
 
-      <div className="mt-10 pt-6 border-t" style={{ borderColor: "var(--c-border)" }}>
+      {/* Daily Challenge */}
+      <Link href="/challenge" className="block mt-8">
+        <div className="rounded-xl p-5 flex items-center gap-4 border" style={{ backgroundColor: "var(--c-card)", borderColor: "var(--c-border)" }}>
+          <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-2xl" style={{ backgroundColor: "#eef2ff" }}>
+            🎯
+          </div>
+          <div className="flex-1">
+            <div className="font-bold" style={{ color: "var(--c-ink)" }}>Daily Challenge</div>
+            <div className="text-sm" style={{ color: "var(--c-muted)" }}>10 random questions across all books</div>
+          </div>
+          <svg className="w-5 h-5 flex-shrink-0" style={{ color: "var(--c-dim)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </Link>
+
+      <div className="mt-8 pt-6 border-t" style={{ borderColor: "var(--c-border)" }}>
         <Link href="/admin" className="text-sm hover:text-hull" style={{ color: "var(--c-muted)" }}>
           Admin — Add questions &amp; flashcards →
         </Link>
