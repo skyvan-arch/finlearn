@@ -3,6 +3,36 @@
 import { prisma } from "./db"
 import { revalidatePath } from "next/cache"
 
+// ── Streak ───────────────────────────────────────────────────────────────────
+
+async function updateStreak() {
+  const now = new Date()
+  const todayStr = now.toISOString().slice(0, 10) // "YYYY-MM-DD"
+
+  const streak = await prisma.userStreak.findUnique({ where: { id: 1 } })
+
+  if (!streak) {
+    await prisma.userStreak.create({ data: { id: 1, currentStreak: 1, longestStreak: 1, lastActivityDate: now } })
+    return
+  }
+
+  const lastStr = streak.lastActivityDate ? streak.lastActivityDate.toISOString().slice(0, 10) : null
+
+  if (lastStr === todayStr) return // already counted today
+
+  const yesterday = new Date(now)
+  yesterday.setDate(yesterday.getDate() - 1)
+  const yesterdayStr = yesterday.toISOString().slice(0, 10)
+
+  const newStreak = lastStr === yesterdayStr ? streak.currentStreak + 1 : 1
+  const longest = Math.max(newStreak, streak.longestStreak)
+
+  await prisma.userStreak.update({
+    where: { id: 1 },
+    data: { currentStreak: newStreak, longestStreak: longest, lastActivityDate: now },
+  })
+}
+
 // ── Progress ────────────────────────────────────────────────────────────────
 
 export async function markLessonComplete(chapterId: number) {
@@ -11,6 +41,7 @@ export async function markLessonComplete(chapterId: number) {
     update: { lessonCompleted: true, lessonCompletedAt: new Date(), lastActivityAt: new Date() },
     create: { chapterId, lessonCompleted: true, lessonCompletedAt: new Date(), lastActivityAt: new Date() },
   })
+  await updateStreak()
   revalidatePath("/")
   revalidatePath("/books/[bookSlug]", "page")
 }
@@ -60,6 +91,7 @@ export async function submitQuizSession(
     },
   })
 
+  await updateStreak()
   revalidatePath(`/books/[bookSlug]/chapters/${chapterSlug}`, "page")
   return { sessionId: session.id, score }
 }
@@ -95,6 +127,7 @@ export async function updateFlashcardInterval(
     where: { id: cardId },
     data: { easeFactor, interval, repetitions, nextReview },
   })
+  await updateStreak()
 }
 
 // ── Admin: Add Question ──────────────────────────────────────────────────────

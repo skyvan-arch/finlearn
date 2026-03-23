@@ -25,9 +25,9 @@ export default function LessonActions({ chapterId, bookSlug, chapterSlug, bookCo
   }
 
   return (
-    <div className="border-t border-[#e5e7eb] pt-6 flex flex-col gap-3">
+    <div className="border-t pt-6 flex flex-col gap-3" style={{ borderColor: "var(--c-border)" }}>
       {done ? (
-        <div className="flex items-center gap-2 text-[#16a34a] font-semibold text-sm py-1">
+        <div className="flex items-center gap-2 font-semibold text-sm py-1" style={{ color: "#16a34a" }}>
           <span>✓ Lesson complete</span>
         </div>
       ) : (
@@ -43,13 +43,15 @@ export default function LessonActions({ chapterId, bookSlug, chapterSlug, bookCo
       <div className="flex gap-3">
         <Link
           href={`${base}/flashcards`}
-          className="flex-1 py-2.5 rounded-lg border border-[#e5e7eb] text-center text-sm font-medium text-[#1a1a1a] hover:bg-[#f9fafb]"
+          className="flex-1 py-2.5 rounded-lg border text-center text-sm font-medium"
+          style={{ borderColor: "var(--c-border)", color: "var(--c-ink)" }}
         >
           Flashcards
         </Link>
         <Link
           href={`${base}/quiz`}
-          className="flex-1 py-2.5 rounded-lg border border-[#e5e7eb] text-center text-sm font-medium text-[#1a1a1a] hover:bg-[#f9fafb]"
+          className="flex-1 py-2.5 rounded-lg border text-center text-sm font-medium"
+          style={{ borderColor: "var(--c-border)", color: "var(--c-ink)" }}
         >
           Quiz
         </Link>
