@@ -20,10 +20,10 @@ export default async function HomePage() {
 
   return (
     <main className="max-w-2xl mx-auto px-4 py-8">
-      <div className="mb-8 flex items-start justify-between">
+      <div className="mb-6 flex items-start justify-between">
         <div>
           <h1 className="text-3xl font-bold mb-1" style={{ color: "var(--c-ink)" }}>FinLearn</h1>
-          <p className="text-sm" style={{ color: "var(--c-muted)" }}>Financial Markets · Hull &amp; Rebonato</p>
+          <p className="text-sm" style={{ color: "var(--c-muted)" }}>Financial Markets · 6 Books</p>
         </div>
         {/* Streak badge */}
         <div className="flex flex-col items-center px-3 py-2 rounded-xl border" style={{ borderColor: currentStreak > 0 ? "#f97316" : "var(--c-border)", backgroundColor: currentStreak > 0 ? "#fff7ed" : "var(--c-card)" }}>
@@ -31,6 +31,24 @@ export default async function HomePage() {
           <span className="text-lg font-bold leading-tight" style={{ color: currentStreak > 0 ? "#ea580c" : "var(--c-muted)" }}>{currentStreak}</span>
           <span className="text-[10px] font-medium" style={{ color: currentStreak > 0 ? "#ea580c" : "var(--c-dim)" }}>day streak</span>
         </div>
+      </div>
+
+      {/* Challenges — pinned to top */}
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <Link href="/challenge" className="block">
+          <div className="rounded-xl p-4 flex flex-col gap-2 border hover:shadow-md transition-shadow h-full" style={{ backgroundColor: "var(--c-card)", borderColor: "var(--c-border)" }}>
+            <div className="text-2xl">🎯</div>
+            <div className="font-bold text-sm" style={{ color: "var(--c-ink)" }}>Daily Challenge</div>
+            <div className="text-xs" style={{ color: "var(--c-muted)" }}>10 random questions across all books</div>
+          </div>
+        </Link>
+        <Link href="/survival" className="block">
+          <div className="rounded-xl p-4 flex flex-col gap-2 border hover:shadow-md transition-shadow h-full" style={{ backgroundColor: "var(--c-card)", borderColor: "#fecdd3" }}>
+            <div className="text-2xl">🔴</div>
+            <div className="font-bold text-sm" style={{ color: "var(--c-ink)" }}>Survival Mode</div>
+            <div className="text-xs" style={{ color: "var(--c-muted)" }}>One mistake ends your run — beat your best</div>
+          </div>
+        </Link>
       </div>
 
       <div className="grid grid-cols-3 gap-3 mb-8">
@@ -65,22 +83,6 @@ export default async function HomePage() {
           </Link>
         ))}
       </div>
-
-      {/* Daily Challenge */}
-      <Link href="/challenge" className="block mt-8">
-        <div className="rounded-xl p-5 flex items-center gap-4 border" style={{ backgroundColor: "var(--c-card)", borderColor: "var(--c-border)" }}>
-          <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-2xl" style={{ backgroundColor: "#eef2ff" }}>
-            🎯
-          </div>
-          <div className="flex-1">
-            <div className="font-bold" style={{ color: "var(--c-ink)" }}>Daily Challenge</div>
-            <div className="text-sm" style={{ color: "var(--c-muted)" }}>10 random questions across all books</div>
-          </div>
-          <svg className="w-5 h-5 flex-shrink-0" style={{ color: "var(--c-dim)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </div>
-      </Link>
 
       <div className="mt-8 pt-6 border-t" style={{ borderColor: "var(--c-border)" }}>
         <Link href="/admin" className="text-sm hover:text-hull" style={{ color: "var(--c-muted)" }}>

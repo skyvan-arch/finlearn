@@ -35,4 +35,22 @@ export const books = [
     coverColor: "#991b1b",
     sortOrder: 4,
   },
+  {
+    slug: "damodaran",
+    title: "Investment Valuation: Tools and Techniques for Determining the Value of Any Asset",
+    shortTitle: "Damodaran",
+    author: "Aswath Damodaran",
+    edition: "3rd Edition",
+    coverColor: "#b45309",
+    sortOrder: 5,
+  },
+  {
+    slug: "wilmott",
+    title: "Paul Wilmott Introduces Quantitative Finance",
+    shortTitle: "Wilmott",
+    author: "Paul Wilmott",
+    edition: "2nd Edition",
+    coverColor: "#7c3aed",
+    sortOrder: 6,
+  },
 ]

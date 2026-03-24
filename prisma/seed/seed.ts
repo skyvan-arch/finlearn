@@ -4,10 +4,14 @@ import { hullChapters } from "./chapters-hull"
 import { rebonatoChapters } from "./chapters-rebonato"
 import { tuckmanChapters } from "./chapters-tuckman"
 import { hullRiskChapters } from "./chapters-hull-risk"
+import { damodaranChapters } from "./chapters-damodaran"
+import { wilmottChapters } from "./chapters-wilmott"
 import { hullQuestionsBySlug } from "./questions-hull"
 import { rebonatoQuestionsBySlug } from "./questions-rebonato"
 import { tuckmanQuestionsBySlug } from "./questions-tuckman"
 import { hullRiskQuestionsBySlug } from "./questions-hull-risk"
+import { damodaranQuestionsBySlug } from "./questions-damodaran"
+import { wilmottQuestionsBySlug } from "./questions-wilmott"
 import { flashcardsBySlug } from "./flashcards"
 
 const prisma = new PrismaClient()
@@ -47,6 +51,8 @@ async function main() {
   const { chapterIds: rebIds } = await seedBook("rebonato", rebonatoChapters, rebonatoQuestionsBySlug)
   await seedBook("tuckman", tuckmanChapters, tuckmanQuestionsBySlug)
   await seedBook("hull-risk", hullRiskChapters, hullRiskQuestionsBySlug)
+  await seedBook("damodaran", damodaranChapters, damodaranQuestionsBySlug)
+  await seedBook("wilmott", wilmottChapters, wilmottQuestionsBySlug)
 
   // Flashcards (Hull + Rebonato)
   let flashCount = 0
