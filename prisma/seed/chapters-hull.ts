@@ -4,6 +4,7 @@
 export const hullChapters = [
   {
     slug: "ch01-introduction",
+    theme: "foundations",
     chapterNumber: 1,
     title: "Introduction",
     partTitle: "Part One: Introduction",
@@ -37,6 +38,7 @@ Derivatives serve crucial economic functions: price discovery, risk transfer, an
   },
   {
     slug: "ch02-futures-markets",
+    theme: "foundations",
     chapterNumber: 2,
     title: "Mechanics of Futures Markets",
     partTitle: "Part One: Introduction",
@@ -72,6 +74,7 @@ Futures contracts specify the delivery month and procedures. The **short** posit
   },
   {
     slug: "ch03-hedging",
+    theme: "foundations",
     chapterNumber: 3,
     title: "Hedging Strategies Using Futures",
     partTitle: "Part Two: Futures and Forward Markets",
@@ -120,6 +123,7 @@ To change portfolio beta from β to β*, adjust the number of contracts accordin
   },
   {
     slug: "ch04-interest-rates",
+    theme: "interest-rates",
     chapterNumber: 4,
     title: "Interest Rates",
     partTitle: "Part Two: Futures and Forward Markets",
@@ -175,6 +179,7 @@ Post-2008 reform shifted from LIBOR to overnight risk-free rates. **SOFR** (Secu
   },
   {
     slug: "ch05-forward-futures-prices",
+    theme: "pricing-theory",
     chapterNumber: 5,
     title: "Determination of Forward and Futures Prices",
     partTitle: "Part Two: Futures and Forward Markets",
@@ -226,6 +231,7 @@ This means the value is zero at inception (K = F₀) but fluctuates as F₀ chan
   },
   {
     slug: "ch06-interest-rate-futures",
+    theme: "interest-rates",
     chapterNumber: 6,
     title: "Interest Rate Futures",
     partTitle: "Part Two: Futures and Forward Markets",
@@ -267,6 +273,7 @@ Fed Funds futures allow participants to speculate on or hedge against Federal Re
   },
   {
     slug: "ch07-swaps",
+    theme: "interest-rates",
     chapterNumber: 7,
     title: "Swaps",
     partTitle: "Part Three: Swaps",
@@ -306,6 +313,7 @@ The credit risk exposure of a swap is roughly proportional to its duration × no
   },
   {
     slug: "ch08-securitization",
+    theme: "credit",
     chapterNumber: 8,
     title: "Securitization and the Credit Crisis of 2007",
     partTitle: "Part Three: Swaps",
@@ -340,6 +348,7 @@ Post-crisis reforms included:
   },
   {
     slug: "ch09-ois-discounting",
+    theme: "interest-rates",
     chapterNumber: 9,
     title: "OIS Discounting, Credit Issues, and Funding Costs",
     partTitle: "Part Three: Swaps",
@@ -377,6 +386,7 @@ These "xVA" adjustments are now standard in derivative pricing desks and have si
   },
   {
     slug: "ch10-options-mechanics",
+    theme: "options",
     chapterNumber: 10,
     title: "Mechanics of Options Markets",
     partTitle: "Part Four: Options",
@@ -422,6 +432,7 @@ Options are quoted as price per share; standard contract covers 100 shares.`,
   },
   {
     slug: "ch11-option-properties",
+    theme: "options",
     chapterNumber: 11,
     title: "Properties of Stock Options",
     partTitle: "Part Four: Options",
@@ -472,6 +483,7 @@ For American options: S − K ≤ C − P ≤ S − Ke^(−rT)
   },
   {
     slug: "ch12-option-strategies",
+    theme: "options",
     chapterNumber: 12,
     title: "Trading Strategies Involving Options",
     partTitle: "Part Four: Options",
@@ -512,6 +524,7 @@ A **spread** involves positions in two or more options of the same type (all cal
   },
   {
     slug: "ch13-binomial-trees",
+    theme: "pricing-theory",
     chapterNumber: 13,
     title: "Binomial Trees",
     partTitle: "Part Four: Options",
@@ -560,6 +573,7 @@ Known discrete dividends: subtract PV of dividends from current stock price befo
   },
   {
     slug: "ch14-wiener-ito",
+    theme: "pricing-theory",
     chapterNumber: 14,
     title: "Wiener Processes and Itô's Lemma",
     partTitle: "Part Four: Options",
@@ -611,6 +625,7 @@ Stock prices are **lognormally distributed** under GBM, with the key consequence
   },
   {
     slug: "ch15-black-scholes",
+    theme: "pricing-theory",
     chapterNumber: 15,
     title: "The Black-Scholes-Merton Model",
     partTitle: "Part Four: Options",
@@ -670,6 +685,7 @@ The one parameter not directly observable is σ. **Implied volatility** (IV) is 
   },
   {
     slug: "ch16-employee-options",
+    theme: "options",
     chapterNumber: 16,
     title: "Employee Stock Options",
     partTitle: "Part Four: Options",
@@ -704,6 +720,7 @@ The 2006 options backdating scandal involved companies retroactively selecting g
   },
   {
     slug: "ch17-index-currency-options",
+    theme: "options",
     chapterNumber: 17,
     title: "Options on Stock Indices and Currencies",
     partTitle: "Part Five: Options Pricing",
@@ -739,6 +756,7 @@ Currency forward prices: F₀ = S₀e^((r−r_f)T). This links spot rates, forwa
   },
   {
     slug: "ch18-futures-options",
+    theme: "options",
     chapterNumber: 18,
     title: "Futures Options and Black's Model",
     partTitle: "Part Five: Options Pricing",
@@ -786,6 +804,7 @@ Its simplicity and widespread use make it the lingua franca of options desks.`,
   },
   {
     slug: "ch19-greeks",
+    theme: "volatility",
     chapterNumber: 19,
     title: "The Greek Letters",
     partTitle: "Part Five: Options Pricing",
@@ -832,6 +851,7 @@ Greeks are additive. For a portfolio, Δ_portfolio = Σ Δᵢ × nᵢ. To hedge 
   },
   {
     slug: "ch20-volatility-smiles",
+    theme: "volatility",
     chapterNumber: 20,
     title: "Volatility Smiles",
     partTitle: "Part Five: Options Pricing",
@@ -878,6 +898,7 @@ Models that can generate realistic smiles:
   },
   {
     slug: "ch21-numerical-methods",
+    theme: "pricing-theory",
     chapterNumber: 21,
     title: "Basic Numerical Procedures",
     partTitle: "Part Five: Options Pricing",
@@ -920,6 +941,7 @@ MC is well-suited for path-dependent options (Asian, lookback, barrier) where th
   },
   {
     slug: "ch22-value-at-risk",
+    theme: "risk",
     chapterNumber: 22,
     title: "Value at Risk",
     partTitle: "Part Six: Risk Management",
@@ -966,6 +988,7 @@ ES_α = E[Loss | Loss > VaR_α]
   },
   {
     slug: "ch23-estimating-volatilities",
+    theme: "volatility",
     chapterNumber: 23,
     title: "Estimating Volatilities and Correlations",
     partTitle: "Part Six: Risk Management",
@@ -1015,6 +1038,7 @@ Cov_n = λ × Cov_{n-1} + (1−λ) × u^X_{n-1} × u^Y_{n-1}
   },
   {
     slug: "ch24-credit-risk",
+    theme: "credit",
     chapterNumber: 24,
     title: "Credit Risk",
     partTitle: "Part Six: Risk Management",
@@ -1061,6 +1085,7 @@ where A is asset value, D is face value of debt, T is debt maturity.
   },
   {
     slug: "ch25-credit-derivatives",
+    theme: "credit",
     chapterNumber: 25,
     title: "Credit Derivatives",
     partTitle: "Part Six: Risk Management",
@@ -1093,6 +1118,7 @@ A **payer swaption** on a CDS gives the right to enter a CDS paying a specified 
   },
   {
     slug: "ch26-exotic-options",
+    theme: "exotics",
     chapterNumber: 26,
     title: "Exotic Options",
     partTitle: "Part Seven: Further Topics",
@@ -1137,6 +1163,7 @@ BSM-like closed-form solutions exist for single-barrier options. Double barriers
   },
   {
     slug: "ch27-more-models",
+    theme: "pricing-theory",
     chapterNumber: 27,
     title: "More on Models and Numerical Procedures",
     partTitle: "Part Seven: Further Topics",
@@ -1175,6 +1202,7 @@ The key difficulty: American options require optimal stopping, but MC naturally 
   },
   {
     slug: "ch28-martingales",
+    theme: "pricing-theory",
     chapterNumber: 28,
     title: "Martingales and Measures",
     partTitle: "Part Seven: Further Topics",

@@ -3,6 +3,7 @@
 export const wilmottChapters = [
   {
     slug: "ch01-random-walk",
+    theme: "pricing-theory",
     chapterNumber: 1,
     title: "The Random Walk Hypothesis",
     partTitle: "Part One: Foundations",
@@ -43,6 +44,7 @@ The extra $\\frac{1}{2}\\sigma^2 S^2 \\frac{\\partial^2 f}{\\partial^2 S}$ term 
   },
   {
     slug: "ch02-bsm-equation",
+    theme: "pricing-theory",
     chapterNumber: 2,
     title: "The Black-Scholes-Merton Equation",
     partTitle: "Part One: Foundations",
@@ -83,6 +85,7 @@ BSM assumes: continuous trading, no transaction costs, constant volatility, log-
   },
   {
     slug: "ch03-greeks",
+    theme: "volatility",
     chapterNumber: 3,
     title: "The Greeks",
     partTitle: "Part Two: Risk Management",
@@ -120,6 +123,7 @@ Roughly: $\\Theta \\approx -\\frac{1}{2}\\sigma^2 S^2 \\Gamma$ for near-zero-int
   },
   {
     slug: "ch04-delta-hedging",
+    theme: "volatility",
     chapterNumber: 4,
     title: "Delta Hedging in Practice",
     partTitle: "Part Two: Risk Management",
@@ -151,6 +155,7 @@ Every rebalance incurs bid-ask spread costs. With a spread of $2s$ on the underl
   },
   {
     slug: "ch05-volatility-surface",
+    theme: "volatility",
     chapterNumber: 5,
     title: "Volatility Smiles and the Volatility Surface",
     partTitle: "Part Three: Beyond Black-Scholes",
@@ -181,6 +186,7 @@ Several approaches extend BSM to better fit the observed surface:
   },
   {
     slug: "ch06-numerical-methods",
+    theme: "pricing-theory",
     chapterNumber: 6,
     title: "Numerical Methods: Finite Differences and Monte Carlo",
     partTitle: "Part Four: Numerical Methods",

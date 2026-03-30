@@ -3,6 +3,7 @@
 export const tuckmanChapters = [
   {
     slug: "ch01-discount-factors",
+    theme: "interest-rates",
     chapterNumber: 1,
     title: "Prices, Discount Factors, and Arbitrage",
     partTitle: "Part One: The Time Value of Money",
@@ -30,6 +31,7 @@ Rather than appealing to abstract principles, practitioners price derivatives by
   },
   {
     slug: "ch02-spot-forward-rates",
+    theme: "interest-rates",
     chapterNumber: 2,
     title: "Spot, Forward, and Par Rates",
     partTitle: "Part One: The Time Value of Money",
@@ -65,6 +67,7 @@ All three representations carry the same information — given any one, you can 
   },
   {
     slug: "ch03-duration-convexity",
+    theme: "interest-rates",
     chapterNumber: 3,
     title: "Duration, DV01, and Convexity",
     partTitle: "Part Two: Price Sensitivity",
@@ -108,6 +111,7 @@ Convexity is always positive for standard (non-callable) bonds — a bond with h
   },
   {
     slug: "ch04-swaps",
+    theme: "interest-rates",
     chapterNumber: 4,
     title: "Interest Rate Swaps",
     partTitle: "Part Three: Swaps and Derivatives",
@@ -147,6 +151,7 @@ A **FRA** is a single-period swap: one payment based on the difference between a
   },
   {
     slug: "ch05-mortgages-mbs",
+    theme: "credit",
     chapterNumber: 5,
     title: "Mortgages and Mortgage-Backed Securities",
     partTitle: "Part Four: Structured Products",
@@ -182,6 +187,7 @@ The **Option-Adjusted Spread (OAS)** strips out the embedded prepayment option t
   },
   {
     slug: "ch06-term-structure-models",
+    theme: "rate-models",
     chapterNumber: 6,
     title: "Term Structure Models",
     partTitle: "Part Five: Models",

@@ -31,6 +31,7 @@ model Chapter {
   lessonContent  String
   estimatedMins  Int               @default(15)
   sortOrder      Int
+  theme          String            @default("foundations")
   questions      Question[]
   flashcards     Flashcard[]
   progress       ChapterProgress[]

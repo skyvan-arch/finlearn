@@ -3,6 +3,7 @@
 export const rebonatoChapters = [
   {
     slug: "rch01-framework",
+    theme: "rate-models",
     chapterNumber: 1,
     title: "The Framework",
     partTitle: "Part One: Foundations",
@@ -36,6 +37,7 @@ The **annuity measure** (using the annuity as numeraire) is the natural measure 
   },
   {
     slug: "rch02-lattice-methods",
+    theme: "rate-models",
     chapterNumber: 2,
     title: "Lattice Methods for One-Factor Models",
     partTitle: "Part One: Foundations",
@@ -76,6 +78,7 @@ The free function θ(t) (or equivalently, the mean-reversion level) is calibrate
   },
   {
     slug: "rch03-short-rate-models",
+    theme: "rate-models",
     chapterNumber: 3,
     title: "Calibrating the Models to Caps and Swaptions",
     partTitle: "Part Two: Short Rate Models",
@@ -116,6 +119,7 @@ Adding more parameters improves fit but reduces stability. Parameters calibrated
   },
   {
     slug: "rch04-bdt-bk",
+    theme: "rate-models",
     chapterNumber: 4,
     title: "Black-Derman-Toy and Black-Karasinski Models",
     partTitle: "Part Two: Short Rate Models",
@@ -158,6 +162,7 @@ All one-factor models share the perfect correlation limitation for simultaneous 
   },
   {
     slug: "rch05-two-factor",
+    theme: "rate-models",
     chapterNumber: 5,
     title: "Two-Factor Models",
     partTitle: "Part Two: Short Rate Models",
@@ -199,6 +204,7 @@ Two-factor models require calibrating the cross-factor correlation ρ. This is t
   },
   {
     slug: "rch06-hjm",
+    theme: "rate-models",
     chapterNumber: 6,
     title: "The Heath-Jarrow-Morton Framework",
     partTitle: "Part Three: HJM and LMM",
@@ -237,6 +243,7 @@ A Markovian HJM model is equivalent to a short-rate model. The richest Markovian
   },
   {
     slug: "rch07-lmm-intro",
+    theme: "rate-models",
     chapterNumber: 7,
     title: "The LIBOR Market Model: Introduction",
     partTitle: "Part Three: HJM and LMM",
@@ -277,6 +284,7 @@ This is exactly Black's formula. A cap (a series of caplets) is priced as the su
   },
   {
     slug: "rch08-lmm-dynamics",
+    theme: "rate-models",
     chapterNumber: 8,
     title: "Dynamics and Calibration of the LMM",
     partTitle: "Part Three: HJM and LMM",
@@ -325,6 +333,7 @@ where wᵢ are weights related to the annuity and forward LIBOR rates. This allo
   },
   {
     slug: "rch09-swaption-calibration",
+    theme: "rate-models",
     chapterNumber: 9,
     title: "Swaption Pricing and Calibration",
     partTitle: "Part Three: HJM and LMM",
@@ -371,6 +380,7 @@ Rebonato advocates choosing r ≥ 3 to capture the main features of yield curve 
   },
   {
     slug: "rch10-smile-models",
+    theme: "volatility",
     chapterNumber: 10,
     title: "Smile Modelling: Local Volatility and Beyond",
     partTitle: "Part Four: Smile and Stochastic Volatility",
@@ -417,6 +427,7 @@ The **SABR-LMM** combines the correlation structure of LMM with SABR dynamics fo
   },
   {
     slug: "rch11-ir-exotics",
+    theme: "exotics",
     chapterNumber: 11,
     title: "Interest Rate Exotic Derivatives",
     partTitle: "Part Five: Applications",
@@ -456,6 +467,7 @@ A **range accrual** pays a fixed coupon for each day the reference rate lies wit
   },
   {
     slug: "rch12-market-models-advanced",
+    theme: "rate-models",
     chapterNumber: 12,
     title: "Advanced Topics in Market Models",
     partTitle: "Part Five: Applications",
@@ -496,6 +508,7 @@ These approximate formulas are invaluable for trading desks.`,
   },
   {
     slug: "rch13-model-risk",
+    theme: "risk",
     chapterNumber: 13,
     title: "Model Risk and Validation",
     partTitle: "Part Six: Model Risk",
@@ -538,6 +551,7 @@ Best practices for model validation:
   },
   {
     slug: "rch14-practical",
+    theme: "rate-models",
     chapterNumber: 14,
     title: "Practical Aspects of Calibration and Hedging",
     partTitle: "Part Six: Model Risk",

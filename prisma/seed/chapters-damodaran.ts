@@ -3,6 +3,7 @@
 export const damodaranChapters = [
   {
     slug: "ch01-intro-valuation",
+    theme: "pricing-theory",
     chapterNumber: 1,
     title: "Introduction to Valuation",
     partTitle: "Part One: Foundations",
@@ -30,6 +31,7 @@ Uncertainty is not the enemy of valuation — it is simply part of it. Every DCF
   },
   {
     slug: "ch02-dcf-valuation",
+    theme: "pricing-theory",
     chapterNumber: 2,
     title: "Discounted Cash Flow Valuation",
     partTitle: "Part Two: DCF Valuation",
@@ -70,6 +72,7 @@ where $g$ is the stable long-run growth rate (≤ nominal GDP growth for most fi
   },
   {
     slug: "ch03-cost-of-capital",
+    theme: "pricing-theory",
     chapterNumber: 3,
     title: "Cost of Capital and WACC",
     partTitle: "Part Two: DCF Valuation",
@@ -108,6 +111,7 @@ The cost of debt is the rate the firm would pay on new borrowings. It can be est
   },
   {
     slug: "ch04-equity-risk-premium",
+    theme: "pricing-theory",
     chapterNumber: 4,
     title: "The Equity Risk Premium",
     partTitle: "Part Two: DCF Valuation",
@@ -139,6 +143,7 @@ Country risk premiums can be estimated from sovereign credit spreads (adjusted f
   },
   {
     slug: "ch05-relative-valuation",
+    theme: "pricing-theory",
     chapterNumber: 5,
     title: "Relative Valuation: Multiples",
     partTitle: "Part Three: Relative Valuation",
@@ -172,6 +177,7 @@ Relative valuation tells you whether a firm is cheap or expensive **relative to 
   },
   {
     slug: "ch06-growth-reinvestment",
+    theme: "pricing-theory",
     chapterNumber: 6,
     title: "Estimating Growth and Reinvestment",
     partTitle: "Part Two: DCF Valuation",

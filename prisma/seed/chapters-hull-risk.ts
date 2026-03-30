@@ -3,6 +3,7 @@
 export const hullRiskChapters = [
   {
     slug: "ch01-risk-introduction",
+    theme: "risk",
     chapterNumber: 1,
     title: "Introduction: Risk vs. Return",
     partTitle: "Part One: Financial Institutions",
@@ -31,6 +32,7 @@ $$RAROC = \\frac{\\text{Risk-adjusted revenue}}{\\text{Economic capital}}$$
   },
   {
     slug: "ch02-value-at-risk",
+    theme: "risk",
     chapterNumber: 2,
     title: "Value at Risk",
     partTitle: "Part Two: Market Risk",
@@ -62,6 +64,7 @@ VaR tells you nothing about losses **beyond** the threshold. A portfolio with 99
   },
   {
     slug: "ch03-expected-shortfall",
+    theme: "risk",
     chapterNumber: 3,
     title: "Expected Shortfall and Coherent Risk Measures",
     partTitle: "Part Two: Market Risk",
@@ -93,6 +96,7 @@ The shift to ES in FRTB creates challenges: ES is harder to backtest than VaR (b
   },
   {
     slug: "ch04-credit-risk",
+    theme: "credit",
     chapterNumber: 4,
     title: "Credit Risk: Default Probabilities",
     partTitle: "Part Three: Credit Risk",
@@ -126,6 +130,7 @@ $$\\text{CDS spread} \\approx \\text{Bond yield} - \\text{Risk-free rate}$$`,
   },
   {
     slug: "ch05-basel",
+    theme: "risk",
     chapterNumber: 5,
     title: "Basel I, II, and III",
     partTitle: "Part Four: Regulation",
@@ -162,6 +167,7 @@ Basel III responded to the 2008 crisis with:
   },
   {
     slug: "ch06-market-risk-capital",
+    theme: "risk",
     chapterNumber: 6,
     title: "Market Risk and the Trading Book",
     partTitle: "Part Four: Regulation",

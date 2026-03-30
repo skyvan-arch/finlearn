@@ -24,7 +24,7 @@ async function seedBook(slug: string, chapters: any[], questionsBySlug: Record<s
   for (const ch of chapters) {
     const created = await prisma.chapter.upsert({
       where: { bookId_chapterNumber: { bookId: book.id, chapterNumber: ch.chapterNumber } },
-      update: { title: ch.title, lessonContent: ch.lessonContent },
+      update: { title: ch.title, lessonContent: ch.lessonContent, theme: ch.theme ?? "foundations" },
       create: { ...ch, bookId: book.id },
     })
     chapterIds[ch.slug] = created.id
