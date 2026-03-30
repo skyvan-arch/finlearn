@@ -81,13 +81,14 @@ export default function QuizEngine({ chapterId, chapterSlug, bookSlug, bookColor
     setSelected(String(val)); recordAnswer(String(val), val === parsed.correct); setPhase("revealed")
   }
 
-  async function next() {
+  function next() {
     const isLast = current + 1 >= questions.length
     startTimeRef.current = Date.now()
     if (isLast) {
       const currentScore = answersRef.current.filter((a) => a.isCorrect).length
       setFinalScore(currentScore)
-      await submitQuizSession(chapterId, chapterSlug, answersRef.current)
+      // fire-and-forget — show results instantly, save in background
+      submitQuizSession(chapterId, chapterSlug, answersRef.current)
       setPhase("done")
     } else {
       setSelected(null); setPhase("answering"); setCurrent((c) => c + 1)
@@ -170,10 +171,10 @@ export default function QuizEngine({ chapterId, chapterSlug, bookSlug, bookColor
       {/* Explanation */}
       {phase === "revealed" && (
         <div className={`mt-4 p-4 rounded-lg border ${lastCorrect ? "bg-[#f0fdf4] border-[#bbf7d0]" : "bg-[#fef2f2] border-[#fecaca]"}`}>
-          <div className="text-xs font-semibold uppercase mb-1.5" style={{ color: "var(--c-muted)" }}>
+          <div className="text-xs font-semibold uppercase mb-1.5" style={{ color: lastCorrect ? "#166534" : "#991b1b" }}>
             {lastCorrect ? "✓ Correct" : "✗ Incorrect"} — Explanation
           </div>
-          <p className="text-sm leading-relaxed" style={{ color: "var(--c-ink)" }}>{q.explanation}</p>
+          <p className="text-sm leading-relaxed" style={{ color: "#1f2937" }}>{q.explanation}</p>
         </div>
       )}
 

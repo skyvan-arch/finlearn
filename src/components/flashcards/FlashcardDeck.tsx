@@ -44,8 +44,9 @@ export default function FlashcardDeck({ cards, bookSlug, chapterSlug, bookColor 
 
   const card = cards[index]
 
-  async function rate(quality: 0 | 3 | 5) {
-    await updateFlashcardInterval(card.id, quality)
+  function rate(quality: 0 | 3 | 5) {
+    // fire-and-forget — don't block UI on server round-trip
+    updateFlashcardInterval(card.id, quality)
     if (index + 1 >= cards.length) setDone(true)
     else { setIndex((i) => i + 1); setFlipped(false) }
   }
@@ -60,11 +61,14 @@ export default function FlashcardDeck({ cards, bookSlug, chapterSlug, bookColor 
         <span className="text-sm" style={{ color: "var(--c-muted)" }}>{index + 1}/{cards.length}</span>
       </div>
 
-      {/* Card */}
+      {/* Card — tap front to flip, tap back to mark Easy */}
       <div
-        className="rounded-2xl p-6 min-h-[220px] flex flex-col justify-between cursor-pointer select-none shadow-sm hover:shadow-md transition-shadow border"
+        className="rounded-2xl p-6 min-h-[220px] flex flex-col justify-between cursor-pointer select-none border"
         style={{ backgroundColor: "var(--c-card)", borderColor: "var(--c-border)" }}
-        onClick={() => !flipped && setFlipped(true)}
+        onClick={() => {
+          if (!flipped) setFlipped(true)
+          else rate(5)
+        }}
       >
         <div className="flex-1 flex flex-col justify-center">
           {!flipped ? (
@@ -83,14 +87,17 @@ export default function FlashcardDeck({ cards, bookSlug, chapterSlug, bookColor 
             </>
           )}
         </div>
-        {!flipped && <div className="text-center text-xs mt-4" style={{ color: "var(--c-dim)" }}>Tap to reveal →</div>}
+        {!flipped
+          ? <div className="text-center text-xs mt-4" style={{ color: "var(--c-dim)" }}>Tap to reveal →</div>
+          : <div className="text-center text-xs mt-4" style={{ color: "var(--c-dim)" }}>Tap card = Easy · or rate below</div>
+        }
       </div>
 
       {flipped && (
         <div className="mt-4 grid grid-cols-3 gap-3">
-          <button onClick={() => rate(0)} className="py-3 rounded-lg border border-[#fca5a5] bg-[#fee2e2] text-[#dc2626] font-semibold text-sm">✗ Hard</button>
-          <button onClick={() => rate(3)} className="py-3 rounded-lg border border-[#fcd34d] bg-[#fef9c3] text-[#92400e] font-semibold text-sm">~ OK</button>
-          <button onClick={() => rate(5)} className="py-3 rounded-lg border border-[#86efac] bg-[#dcfce7] text-[#16a34a] font-semibold text-sm">✓ Easy</button>
+          <button onClick={(e) => { e.stopPropagation(); rate(0) }} className="py-4 rounded-lg border border-[#fca5a5] bg-[#fee2e2] text-[#dc2626] font-semibold text-sm">✗ Hard</button>
+          <button onClick={(e) => { e.stopPropagation(); rate(3) }} className="py-4 rounded-lg border border-[#fcd34d] bg-[#fef9c3] text-[#92400e] font-semibold text-sm">~ OK</button>
+          <button onClick={(e) => { e.stopPropagation(); rate(5) }} className="py-4 rounded-lg border border-[#86efac] bg-[#dcfce7] text-[#16a34a] font-semibold text-sm">✓ Easy</button>
         </div>
       )}
     </div>

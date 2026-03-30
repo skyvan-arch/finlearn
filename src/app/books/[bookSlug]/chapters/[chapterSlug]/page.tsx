@@ -83,6 +83,22 @@ export default async function ChapterPage({ params }: { params: Promise<{ bookSl
             </svg>
           </div>
         </Link>
+
+        {/* Interview */}
+        <Link href={`${base}/interview`} className="block">
+          <div className="rounded-xl p-5 flex items-center gap-4 hover:shadow-md transition-shadow border" style={{ backgroundColor: "var(--c-card)", borderColor: "var(--c-border)" }}>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#ede9fe" }}>
+              <span className="text-xl">🎙️</span>
+            </div>
+            <div className="flex-1">
+              <div className="font-semibold" style={{ color: "var(--c-ink)" }}>Interview Mode</div>
+              <div className="text-sm" style={{ color: "var(--c-muted)" }}>Recall without hints · self-grade</div>
+            </div>
+            <svg className="w-5 h-5" style={{ color: "var(--c-dim)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </Link>
       </div>
     </main>
   )
