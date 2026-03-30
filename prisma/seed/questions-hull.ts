@@ -160,8 +160,10 @@ export const hullCh02 = [
       "Paying the full notional value of the contract"],
     1, "Closing out means entering an opposite trade: if you are long 5 June gold futures, you sell 5 June gold futures. The positions offset and open interest falls.", "EASY", ["closing-out"]),
 
-  tf("Exchange-traded futures contracts are always physically settled.",
-    false, "Many futures contracts are cash-settled—particularly financial futures like equity index futures and Eurodollar/SOFR futures. Physical settlement applies to many commodity futures.", "MEDIUM", ["settlement"]),
+  mcq("One key difference between futures and forward contracts is that futures contracts involve:",
+    ["No initial deposit requirement", "Daily cash flows (mark-to-market), whereas forwards settle entirely at maturity",
+      "No counterparty credit risk for either party", "Longer maturities on average than forwards"],
+    1, "Futures are marked to market daily — gains/losses flow as cash each day. Forward contracts involve no cash flows until maturity. This difference matters for pricing when futures prices are correlated with interest rates.", "MEDIUM", ["futures-vs-forward", "mark-to-market"]),
 ]
 
 // ── CHAPTER 3: Hedging with Futures ──────────────────────────────────────────
@@ -319,8 +321,8 @@ export const hullCh05 = [
       "Higher than the forward price", "Indeterminate"],
     2, "When futures prices and interest rates are positively correlated, gains on long futures occur when interest rates are high (earn more reinvesting gains) and losses occur when rates are low (less interest earned). This advantage means futures prices > forward prices.", "HARD", ["futures-vs-forward"]),
 
-  tf("A commodity that is in normal backwardation has a futures price above the expected future spot price.",
-    false, "Normal backwardation: futures price < expected future spot price. It arises from a risk premium: long futures holders require compensation for bearing price risk.", "HARD", ["backwardation", "risk-premium"]),
+  tf("Normal backwardation means the futures price is below the expected future spot price, compensating long futures holders for bearing price risk.",
+    true, "Normal backwardation: F₀ < E[S_T]. Speculators going long futures require compensation for absorbing price risk from hedgers (typically short). The futures price is a downward-biased predictor of the future spot price.", "HARD", ["backwardation", "risk-premium"]),
 
   mcq("A stock pays a known dividend of $2.00 in 3 months. Current stock price is $60, r=4% (continuous). The 6-month forward price is approximately:",
     ["$60.61", "$59.20", "$58.81", "$61.22"],
@@ -851,8 +853,10 @@ export const hullCh09 = [
       "Corporate bond credit spreads", "Government bond term premiums"],
     1, "The LIBOR-OIS spread = bank credit risk + liquidity premium. It widened dramatically in 2008, signalling severe stress in interbank markets.", "MEDIUM", ["libor-ois-spread"]),
 
-  tf("The 'cheapest-to-deliver' option in bond futures contracts has value because the short can select which eligible bond to deliver.",
-    true, "The short holds a delivery option: they will deliver the bond that minimises their cost (the cheapest-to-deliver). This option has real value and affects futures pricing.", "MEDIUM", ["cheapest-to-deliver", "bond-futures"]),
+  mcq("KVA (Capital Valuation Adjustment) reflects the cost of:",
+    ["The credit risk of the counterparty", "Regulatory capital that must be set aside against a derivatives position",
+      "Funding the initial margin at a clearing house", "Bid-ask spreads in illiquid markets"],
+    1, "KVA captures the cost of holding regulatory capital (e.g., under Basel III) against uncollateralized or partially-collateralized positions. It is one of the 'xVA' adjustments alongside CVA, DVA, and FVA.", "HARD", ["kva", "xva", "regulatory-capital"]),
 
   mcq("DVA (Debit Valuation Adjustment) represents:",
     ["The loss in derivative value from the counterparty's default risk",
@@ -868,8 +872,10 @@ export const hullCh09 = [
       "Government bonds are tax-exempt"],
     1, "FVA accounts for the funding cost when a dealer must post collateral or fund uncollateralized positions at a rate above OIS, creating an additional cost not captured by risk-free discounting.", "HARD", ["fva", "xva"]),
 
-  tf("SOFR has replaced LIBOR as the primary benchmark rate for US dollar derivatives.",
-    true, "SOFR (Secured Overnight Financing Rate), based on repo transactions, replaced USD LIBOR after the LIBOR phase-out. It is essentially risk-free, unlike LIBOR.", "EASY", ["sofr", "libor-replacement"]),
+  mcq("Term SOFR differs from SOFR compounded in arrears in that term SOFR is:",
+    ["Known only at the end of the interest period", "Set at the beginning of the period (forward-looking), like LIBOR was",
+      "Higher than SOFR compounded in arrears by definition", "Published only for overnight maturities"],
+    1, "Term SOFR (e.g., 1-month, 3-month) is published at the start of the interest period — it is forward-looking, like LIBOR. SOFR compounded in arrears is computed during the period and known only at the end.", "MEDIUM", ["sofr", "term-sofr", "backward-looking"]),
 
   mcq("A key difference between SOFR and LIBOR is that SOFR is:",
     ["Forward-looking and unsecured", "Backward-looking and secured (repo-based)",
@@ -989,8 +995,12 @@ export const hullCh18 = [
     ["0", "5", "5·e^(−rT)", "105"],
     1, "Intrinsic value of a futures call = max(F − K, 0) = max(105 − 100, 0) = 5. Note this is not discounted; intrinsic value is defined without discounting.", "EASY", ["intrinsic-value"]),
 
-  tf("When interest rates are positively correlated with the underlying asset price, futures prices exceed forward prices.",
-    true, "When rates and asset prices are positively correlated, long futures gain more (daily mark-to-market profit) when rates are high, and lose less when rates are low. This makes futures more attractive, pushing F_futures > F_forward.", "HARD", ["futures-vs-forward", "correlation"]),
+  mcq("For a futures option, the delta of a long call (with futures delta ≈ 1) is:",
+    ["Always equal to 1.0 regardless of moneyness",
+      "N(d₁) in Black's model — between 0 and 1, rising toward 1 deep ITM",
+      "The same as a stock call delta multiplied by e^(rT)",
+      "Always greater than the corresponding spot option delta"],
+    1, "In Black's model for futures options, delta = e^(−rT)·N(d₁). The e^(−rT) discounting arises because a futures position requires no upfront cash. Deep ITM futures calls approach delta = e^(−rT) ≈ 1 for short maturities.", "HARD", ["futures-options", "delta", "blacks-model"]),
 
   mcq("If futures options expire at the same time as the futures contract, exercising a futures call delivers:",
     ["Physical delivery of the underlying asset",
@@ -1016,12 +1026,17 @@ export const hullCh21 = [
       "The tree recombines at all nodes"],
     1, "p is chosen so that the discounted expectation of the stock price equals the current price: S = e^(−rΔt)[p·Su + (1−p)·Sd]. This enforces no-arbitrage / risk-neutral pricing.", "MEDIUM", ["binomial-tree", "risk-neutral"]),
 
-  mcq("In the Cox-Ross-Rubinstein (CRR) binomial tree, the up factor u is set to:",
-    ["e^(σ√Δt)", "e^(rΔt)", "1 + σ√Δt", "σ·Δt"],
-    0, "CRR sets u = e^(σ√Δt) and d = 1/u = e^(−σ√Δt). This choice ensures the tree's variance matches the lognormal stock volatility σ as Δt → 0.", "MEDIUM", ["crr", "binomial-tree"]),
+  mcq("The Crank-Nicolson finite difference scheme is preferred over the explicit scheme for option pricing because:",
+    ["It is simpler to code and always faster", "It is unconditionally stable and second-order accurate in both time and space",
+      "It avoids the need for a grid entirely", "It gives exact prices for American options"],
+    1, "Crank-Nicolson averages the implicit and explicit schemes: unconditionally stable (no grid-spacing restriction) and O(Δt², ΔS²) accurate. The explicit scheme is only O(Δt) and requires small Δt for stability.", "HARD", ["crank-nicolson", "finite-difference", "stability"]),
 
-  tf("American options can be valued on a binomial tree by comparing, at each node, the option's continuation value with its immediate exercise value.",
-    true, "At every node the American option value = max(immediate exercise payoff, discounted expected value of holding). This backward-induction comparison naturally captures the early-exercise premium.", "EASY", ["american-options", "binomial-tree"]),
+  mcq("Barrier options are harder to price accurately with coarse binomial trees because:",
+    ["The risk-neutral probability changes near the barrier",
+      "The barrier may fall between grid nodes, causing the tree to misjudge the knock-out probability",
+      "Barrier options require more time steps than vanilla options",
+      "The early-exercise feature interacts badly with barriers"],
+    1, "When the barrier falls between tree nodes, the tree systematically overestimates (for knock-out) or underestimates the option value. Solutions include adjusting the barrier inward or using trinomial/adaptive trees.", "HARD", ["barrier-option", "binomial-tree", "accuracy"]),
 
   mcq("In a trinomial tree, each node branches into three possible outcomes. Compared to a binomial tree with the same number of time steps, trinomial trees generally:",
     ["Require more computation and provide no benefit",

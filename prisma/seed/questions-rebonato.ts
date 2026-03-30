@@ -175,12 +175,12 @@ export const rebCh07 = [
       "Simpler correlation structure", "Analytical formulas for all exotic products"],
     1, "LMM rates are directly observable (3M LIBOR, SOFR forward rates). Calibration to cap prices is direct since caplets are priced by Black's formula exactly. Practitioners calibrate σₖ(t) to market cap vols directly.", "MEDIUM", ["lmm", "calibration"]),
 
-  mcq("A cap priced in the LMM equals:",
-    ["One Black's formula applied to the entire cap",
-      "The sum of caplet prices, each priced by Black's formula",
-      "A binomial tree calculation",
-      "A Monte Carlo simulation"],
-    1, "A cap = series of caplets. Each caplet is priced by Black's formula. The LMM is designed so that each LIBOR has log-normal dynamics under its forward measure, giving Black's formula exactly.", "EASY", ["lmm", "cap-pricing"]),
+  mcq("Swaptions CANNOT be priced by Black's formula exactly within the standard LMM because:",
+    ["The LMM does not model interest rates",
+      "The swap rate is not a martingale under any of the individual LIBOR forward measures",
+      "Swaptions always require numerical methods regardless of the model",
+      "The LMM models fixed-rate bonds, not floating rates"],
+    1, "Each LIBOR rate is a martingale under its own forward measure, but the swap rate (a ratio of a sum of forwards) is not a martingale under any of those measures. Exact swaption pricing in LMM requires Monte Carlo or an approximation.", "HARD", ["lmm", "swaption", "measure"]),
 ]
 
 // ── CHAPTER 8: LMM Dynamics ───────────────────────────────────────────────────
